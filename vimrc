@@ -42,20 +42,9 @@ let &termencoding=&encoding
 set fileencodings=utf-8,gbk 
 
 " 很多插件都会要求的配置检测文件类型 
-:filetype on 
-:filetype plugin on 
-:filetype indent on 
-
-" 根据不同的文件类型执行不同的命令 
-:autocmd FileType python :set number 
-:autocmd FileType python :set foldmethod=syntax 
-:autocmd FileType python :set autoindent 
-
-" 补全设置，不设也能用
-let Tlist_Ctags_Cmd='/usr/bin/ctags'
-filetype plugin indent on
-filetype plugin on
-set ofu=syntaxcomplete#Complete
+filetype on 
+filetype plugin on 
+filetype indent on 
 
 " 一旦一行的字符超出80个的话就把那些字符的背景设为红色
 " highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
@@ -71,7 +60,7 @@ set showmatch
 " <leader>ig
 let g:indent_guides_guide_size=1
 
-" 插件： pep8
+" 插件：pep8
 let g:pep8_map='<leader>pep8' 
 
 " 插件
@@ -86,11 +75,6 @@ set paste
 " vimrc文件修改之后自动加载
 autocmd! bufwritepost .vimrc source % 
 
-" Python 文件的一般设置
-autocmd FileType python set tabstop=4 shiftwidth=4 expandtab  
-" 自动补全配置  
-autocmd FileType python set omnifunc=pythoncomplete#Complete  
-   
 " Return to last edit position when opening files (You want this!)  
 autocmd BufReadPost *  
      \ if line("'\"") > 0 && line("'\"") <= line("$") |  
@@ -106,9 +90,31 @@ set magic
 " Configure backspace so it acts as it should act  
 set backspace=eol,start,indent  
 set whichwrap+=<,>,h,l  
+
+"
+"  Python 相关 
+"
+
+" 一般设置
+autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
+
+" 自带自动补全配置
+" <CTRL+x> 之后按 <Tab>
+autocmd FileType python set omnifunc=pythoncomplete#Complete  
        
-"pydiction 1.2 python auto complete  
+" Pydiction 自动补全插件
+" <ctrl+n> 调出窗口
 let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'  
 "defalut g:pydiction_menu_height == 15  
 let g:pydiction_menu_height = 20
 
+" 根据不同的文件类型执行不同的命令 
+:autocmd FileType python :set number 
+:autocmd FileType python :set foldmethod=syntax 
+:autocmd FileType python :set autoindent 
+
+" 项目视图
+" 安装 ctags, 在项目目录下执行 ctags -R *
+let Tlist_Ctags_Cmd='/usr/bin/ctags'
+" taglist.vim 插件, 见 ~/.vim/plugin 目录
+":TlistToggle" 来打开和关闭taglist窗口
