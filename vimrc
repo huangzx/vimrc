@@ -57,14 +57,16 @@ filetype indent on
 set showmatch 
 
 " 插件：显示对齐线
-" <leader>ig
+" 快捷键：<leader>ig
 let g:indent_guides_guide_size=1
 
 " 插件：pep8
+" 快捷键：<leader>pep8
 let g:pep8_map='<leader>pep8' 
 
-" 插件
-" map <leader>n :NERDTreeToggle<CR>
+" 浏览目录插件
+" 快捷键: <F3>
+nnoremap <F3> :NERDTreeToggle<CR>
 
 " 文件修改之后自动载入 
 "set autoread      
@@ -118,3 +120,5 @@ let g:pydiction_menu_height = 20
 let Tlist_Ctags_Cmd='/usr/bin/ctags'
 " taglist.vim 插件, 见 ~/.vim/plugin 目录
 ":TlistToggle" 来打开和关闭taglist窗口
+" 快捷键: <F4>
+nnoremap <F4> :TlistToggle<CR>
