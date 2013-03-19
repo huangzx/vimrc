@@ -37,6 +37,9 @@ set incsearch
 " 高亮搜索 
 set hlsearch 
 
+" 映射键，默认是 '\', 改成 ',' 
+let mapleader=','
+
 " 有时中文会显示乱码
 let &termencoding=&encoding 
 set fileencodings=utf-8,gbk 
@@ -57,11 +60,11 @@ filetype indent on
 set showmatch 
 
 " 插件：显示对齐线
-" 快捷键：<leader>ig
+" 快捷键：,ig
 let g:indent_guides_guide_size=1
 
 " 插件：pep8
-" 快捷键：<leader>pep8
+" 快捷键：,pep8
 let g:pep8_map='<leader>pep8' 
 
 " 浏览目录插件
@@ -122,3 +125,11 @@ let Tlist_Ctags_Cmd='/usr/bin/ctags'
 ":TlistToggle" 来打开和关闭taglist窗口
 " 快捷键: <F4>
 nnoremap <F4> :TlistToggle<CR>
+
+" Searching Stack Overflow
+" type ,s
+nmap ,s :ConqueTermVSplit python /home/hzx/github-huangzx/pytoys/stackoverflow_cli_search.py 
+
+" Searching github
+" type ,g
+nmap ,g :ConqueTermVSplit python /home/hzx/github-huangzx/pytoys/github_search.py
